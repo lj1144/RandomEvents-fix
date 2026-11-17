@@ -3,7 +3,7 @@ package com.adri1711.randomevents.match;
 import org.bukkit.inventory.ItemStack;
 
 import com.adri1711.randomevents.match.utils.InventoryPers;
-import com.adri1711.util.enums.XMaterial;
+import com.adri1711.randomevents.compat.XMaterial;
 
 public class Kit {
 

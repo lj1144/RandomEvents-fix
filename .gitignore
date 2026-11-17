@@ -8,3 +8,6 @@
 .recommenders/caches/identified-project-coordinates.json
 .recommenders/caches/manual-mappings.json
 RandomEvents/target/RandomEvents.jar
+
+# Maven output
+RandomEvents/target/

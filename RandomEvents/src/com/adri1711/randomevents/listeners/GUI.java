@@ -23,8 +23,8 @@ import com.adri1711.randomevents.match.MatchActive;
 import com.adri1711.randomevents.util.Constantes;
 import com.adri1711.randomevents.util.UtilsRandomEvents;
 import com.adri1711.randomevents.util.UtilsSQL;
-import com.adri1711.util.enums.XMaterial;
-import com.adri1711.util.enums.XSound;
+import com.adri1711.randomevents.compat.XMaterial;
+import com.adri1711.randomevents.compat.XSound;
 
 public class GUI implements Listener {
 

@@ -30,7 +30,7 @@ import com.adri1711.randomevents.match.utils.InventoryPers;
 import com.adri1711.randomevents.util.Constantes;
 import com.adri1711.randomevents.util.UtilsCitizen;
 import com.adri1711.randomevents.util.UtilsRandomEvents;
-import com.adri1711.util.enums.XMaterial;
+import com.adri1711.randomevents.compat.XMaterial;
 
 public class Chat implements Listener {
 
@@ -344,9 +344,9 @@ public class Chat implements Listener {
 			if (plugin.getPlayerMatches().containsKey(player.getName())) {
 				player.sendMessage(Creacion.KITS.getMessage());
 				for (Kit m : plugin.getKits()) {
-					player.sendMessage("§6§l" + plugin.getKits().indexOf(m) + " - " + m.getName());
+					player.sendMessage("Â§6Â§l" + plugin.getKits().indexOf(m) + " - " + m.getName());
 				}
-				player.sendMessage("§6§l" + plugin.getKits().size() + " - §e§lNew Kit");
+				player.sendMessage("Â§6Â§l" + plugin.getKits().size() + " - Â§eÂ§lNew Kit");
 			}
 
 		}
@@ -555,9 +555,9 @@ public class Chat implements Listener {
 			plugin.getPlayersCreationWaterDrop().remove(player.getName());
 			player.sendMessage(Creacion.WATER_DROP_SCENES.getMessage());
 			for (WaterDropStep m : plugin.getWaterDrops()) {
-				player.sendMessage("§6§l" + plugin.getWaterDrops().indexOf(m) + " - " + m.getName());
+				player.sendMessage("Â§6Â§l" + plugin.getWaterDrops().indexOf(m) + " - " + m.getName());
 			}
-			player.sendMessage("§6§l" + plugin.getWaterDrops().size() + " - §e§lNew Water Drop");
+			player.sendMessage("Â§6Â§l" + plugin.getWaterDrops().size() + " - Â§eÂ§lNew Water Drop");
 
 		}
 	}
@@ -1493,28 +1493,28 @@ public class Chat implements Listener {
 					switch (Creacion.getByPosition(position)) {
 					case MINIGAME_TYPE:
 						for (MinigameType m : MinigameType.values()) {
-							player.sendMessage("§6§l" + m.ordinal() + " - " + m.getMessage(plugin));
+							player.sendMessage("Â§6Â§l" + m.ordinal() + " - " + m.getMessage(plugin));
 						}
 						break;
 					case MOB_NAME:
 						for (EntityType m : EntityType.values()) {
-							player.sendMessage("§6§l" + m.ordinal() + " - " + m.name());
+							player.sendMessage("Â§6Â§l" + m.ordinal() + " - " + m.name());
 						}
 						break;
 					case WATER_DROP_SCENES:
 						player.sendMessage(c.getMessage(match));
 						for (WaterDropStep m : plugin.getWaterDrops()) {
-							player.sendMessage("§6§l" + plugin.getWaterDrops().indexOf(m) + " - " + m.getName());
+							player.sendMessage("Â§6Â§l" + plugin.getWaterDrops().indexOf(m) + " - " + m.getName());
 						}
-						player.sendMessage("§6§l" + plugin.getWaterDrops().size() + " - §e§lNew Water Drop");
+						player.sendMessage("Â§6Â§l" + plugin.getWaterDrops().size() + " - Â§eÂ§lNew Water Drop");
 
 						break;
 					case KITS:
 						player.sendMessage(c.getMessage(match));
 						for (Kit m : plugin.getKits()) {
-							player.sendMessage("§6§l" + plugin.getKits().indexOf(m) + " - " + m.getName());
+							player.sendMessage("Â§6Â§l" + plugin.getKits().indexOf(m) + " - " + m.getName());
 						}
-						player.sendMessage("§6§l" + plugin.getKits().size() + " - §e§lNew Kit");
+						player.sendMessage("Â§6Â§l" + plugin.getKits().size() + " - Â§eÂ§lNew Kit");
 
 						break;
 					default:
@@ -1530,7 +1530,7 @@ public class Chat implements Listener {
 				case MINIGAME_TYPE:
 					if (!plugin.getEditando().contains(player.getName())) {
 						for (MinigameType m : MinigameType.values()) {
-							player.sendMessage("§6§l" + m.ordinal() + " - " + m.getMessage(plugin));
+							player.sendMessage("Â§6Â§l" + m.ordinal() + " - " + m.getMessage(plugin));
 						}
 						plugin.getPlayersCreation().put(player.getName(), c.getPosition());
 					}
@@ -1543,7 +1543,7 @@ public class Chat implements Listener {
 					break;
 				case MOB_NAME:
 					for (EntityType m : EntityType.values()) {
-						player.sendMessage("§6§l" + m.ordinal() + " - " + m.name());
+						player.sendMessage("Â§6Â§l" + m.ordinal() + " - " + m.name());
 					}
 					plugin.getPlayersCreation().put(player.getName(), c.getPosition());
 
@@ -1552,9 +1552,9 @@ public class Chat implements Listener {
 					player.sendMessage(c.getMessage(match));
 					plugin.getPlayersCreation().put(player.getName(), c.getPosition());
 					for (WaterDropStep m : plugin.getWaterDrops()) {
-						player.sendMessage("§6§l" + plugin.getWaterDrops().indexOf(m) + " - " + m.getName());
+						player.sendMessage("Â§6Â§l" + plugin.getWaterDrops().indexOf(m) + " - " + m.getName());
 					}
-					player.sendMessage("§6§l" + plugin.getWaterDrops().size() + " - §e§lNew Water Drop");
+					player.sendMessage("Â§6Â§l" + plugin.getWaterDrops().size() + " - Â§eÂ§lNew Water Drop");
 
 					break;
 				case KITS:
@@ -1562,9 +1562,9 @@ public class Chat implements Listener {
 					plugin.getPlayersCreation().put(player.getName(), c.getPosition());
 
 					for (Kit m : plugin.getKits()) {
-						player.sendMessage("§6§l" + plugin.getKits().indexOf(m) + " - " + m.getName());
+						player.sendMessage("Â§6Â§l" + plugin.getKits().indexOf(m) + " - " + m.getName());
 					}
-					player.sendMessage("§6§l" + plugin.getKits().size() + " - §e§lNew Kit");
+					player.sendMessage("Â§6Â§l" + plugin.getKits().size() + " - Â§eÂ§lNew Kit");
 
 					break;
 				case USE_OWN_INVENTORY:

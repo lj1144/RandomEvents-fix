@@ -22,7 +22,7 @@ import com.adri1711.randomevents.match.utils.BannedPlayers;
 import com.adri1711.randomevents.metrics.Metrics;
 import com.adri1711.randomevents.placeholders.ReventPlaceholder;
 import com.adri1711.randomevents.util.UtilsRandomEvents;
-import com.adri1711.util.enums.XMaterial;
+import com.adri1711.randomevents.compat.XMaterial;
 
 public class ReventConfig {
 
@@ -416,7 +416,7 @@ public class ReventConfig {
 
 		this.powerUpItem = new ItemStack(XMaterial.EMERALD.parseMaterial());
 		ItemMeta itemMeta = this.powerUpItem.getItemMeta();
-		itemMeta.setDisplayName("§2§lPowerUP");
+		itemMeta.setDisplayName("Â§2Â§lPowerUP");
 		this.powerUpItem.setItemMeta(itemMeta);
 
 		plugin.updateConfig();

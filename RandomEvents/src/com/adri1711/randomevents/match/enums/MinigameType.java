@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 import org.bukkit.Material;
 
 import com.adri1711.randomevents.RandomEvents;
-import com.adri1711.util.enums.XMaterial;
+import com.adri1711.randomevents.compat.XMaterial;
 
 public enum MinigameType {
 	BATTLE_ROYALE("BR", XMaterial.STONE_SWORD.parseMaterial(), "getNameBattleRoyale"),

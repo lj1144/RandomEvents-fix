@@ -7,6 +7,10 @@ import org.bukkit.entity.Horse;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.Event;
+import org.bukkit.plugin.EventExecutor;
+import org.bukkit.plugin.PluginManager;
+import java.lang.reflect.Method;
 import org.bukkit.event.Listener;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -14,10 +18,8 @@ import org.bukkit.potion.PotionEffectType;
 import com.adri1711.randomevents.RandomEvents;
 import com.adri1711.randomevents.match.enums.MinigameType;
 import com.adri1711.randomevents.util.UtilsRandomEvents;
-import com.adri1711.util.enums.XMaterial;
-import com.adri1711.util.enums.XSound;
-import com.shampaggon.crackshot.events.WeaponDamageEntityEvent;
-import com.shampaggon.crackshot.events.WeaponExplodeEvent;
+import com.adri1711.randomevents.compat.XMaterial;
+import com.adri1711.randomevents.compat.XSound;
 
 public class WeaponShoot implements Listener {
 
@@ -28,30 +30,30 @@ public class WeaponShoot implements Listener {
 	}
 
 	@EventHandler(priority = EventPriority.MONITOR)
-	public void weaponDamage(WeaponDamageEntityEvent ev) // Listens to
+	private void weaponDamage(Object ev) // Listens to
 															// EntityDamageEvent
 	{
-		if (ev.getVictim() instanceof Player) {
+		if (get(ev, "getVictim") instanceof Player) {
 
-			Player player = (Player) ev.getVictim();
+			Player player = (Player) get(ev, "getVictim");
 			if (plugin.getMatchActive() != null
 					&& plugin.getMatchActive().getPlayerHandler().getPlayers().contains(player.getName())) {
 				plugin.getMatchActive().setDamageCounter(0);
 				if (!plugin.getMatchActive().getPlaying()) {
-					ev.setCancelled(true);
+					set(ev, "setCancelled", true);
 				} else {
-					if (ev.getPlayer() instanceof Player) {
-						Player damager = (Player) ev.getPlayer();
+					if (get(ev, "getPlayer") instanceof Player) {
+						Player damager = (Player) get(ev, "getPlayer");
 						if (plugin.getMatchActive().getEquipo(player) != null
 								&& plugin.getMatchActive().getEquipo(damager) != null && plugin.getMatchActive()
 										.getEquipo(player).equals(plugin.getMatchActive().getEquipo(damager))) {
-							ev.setCancelled(true);
+							set(ev, "setCancelled", true);
 						} else {
 							if (plugin.getMatchActive().getPlayerHandler().getPlayers().contains(damager.getName())) {
 
-								if (((player.getHealth() - ev.getDamage()) <= 0)) {
+								if (((player.getHealth() - number(ev, "getDamage")) <= 0)) {
 
-									ev.setCancelled(true);
+									set(ev, "setCancelled", true);
 									switch (plugin.getMatchActive().getMatch().getMinigame()) {
 									case SG:
 									case SW:
@@ -60,7 +62,7 @@ public class WeaponShoot implements Listener {
 									case TSG_REAL:
 									case TSW_REAL:
 										if (!plugin.getMatchActive().getAllowDamage()) {
-											ev.setCancelled(true);
+											set(ev, "setCancelled", true);
 										} else {
 											UtilsRandomEvents.mandaMensaje(plugin,
 													plugin.getMatchActive().getPlayerHandler().getPlayersSpectators(),
@@ -103,7 +105,7 @@ public class WeaponShoot implements Listener {
 									case ESCAPE_ARROW:
 									case BLOCK_PARTY:
 
-										ev.setDamage(0);
+										set(ev, "setDamage", 0);
 										break;
 									case ANVIL_SPLEEF:
 									case BOMBARDMENT:
@@ -111,7 +113,7 @@ public class WeaponShoot implements Listener {
 									case WDROP:
 									case SPLEEF:
 									case SPLEGG:
-										ev.setCancelled(true);
+										set(ev, "setCancelled", true);
 										break;
 									case OITC:
 										plugin.getMatchActive().reiniciaPlayer(player);
@@ -203,7 +205,7 @@ public class WeaponShoot implements Listener {
 										plugin.getMatchActive().reiniciaPlayer(player);
 										break;
 									case BOMB_TAG:
-										ev.setDamage(0);
+										set(ev, "setDamage", 0);
 										if (damager.equals(
 												plugin.getMatchActive().getPlayerHandler().getPlayerContador())) {
 											UtilsRandomEvents.borraInventario(damager, plugin);
@@ -235,11 +237,11 @@ public class WeaponShoot implements Listener {
 									case HORSE_RUN:
 									case RACE:
 									case RED_GREEN_LIGHT:
-										ev.setCancelled(true);
+										set(ev, "setCancelled", true);
 										break;
 									case ESCAPE_FROM_BEAST:
 										if (plugin.getMatchActive().getPlayerHandler().getBeast() == null) {
-											ev.setCancelled(true);
+											set(ev, "setCancelled", true);
 
 										} else {
 											if (damager == null
@@ -268,7 +270,7 @@ public class WeaponShoot implements Listener {
 												player.setHealth(player.getMaxHealth());
 
 											} else {
-												ev.setCancelled(true);
+												set(ev, "setCancelled", true);
 											}
 										}
 
@@ -276,7 +278,7 @@ public class WeaponShoot implements Listener {
 									case QUAKECRAFT:
 									case HOEHOEHOE:
 									case SPLATOON:
-										ev.setCancelled(true);
+										set(ev, "setCancelled", true);
 										break;
 									default:
 										break;
@@ -290,10 +292,10 @@ public class WeaponShoot implements Listener {
 									case TSG_REAL:
 									case TSW_REAL:
 										if (!plugin.getMatchActive().getAllowDamage()) {
-											ev.setCancelled(true);
+											set(ev, "setCancelled", true);
 										} else {
 											if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-												ev.setCancelled(false);
+												set(ev, "setCancelled", false);
 											}
 										}
 										break;
@@ -309,12 +311,12 @@ public class WeaponShoot implements Listener {
 									case OITC:
 									case KOTH:
 										if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-											ev.setCancelled(false);
+											set(ev, "setCancelled", false);
 										}
 										break;
 									case ESCAPE_FROM_BEAST:
 										if (plugin.getMatchActive().getPlayerHandler().getBeast() == null) {
-											ev.setCancelled(true);
+											set(ev, "setCancelled", true);
 
 										} else {
 
@@ -325,11 +327,11 @@ public class WeaponShoot implements Listener {
 													|| player.getName().equals(plugin.getMatchActive()
 															.getPlayerHandler().getBeast().getName())) {
 												if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-													ev.setCancelled(false);
+													set(ev, "setCancelled", false);
 												}
 
 											} else {
-												ev.setCancelled(true);
+												set(ev, "setCancelled", true);
 											}
 										}
 
@@ -338,9 +340,9 @@ public class WeaponShoot implements Listener {
 									case KNOCKBACK_DUEL:
 									case ESCAPE_ARROW:
 									case BLOCK_PARTY:
-										ev.setDamage(0);
+										set(ev, "setDamage", 0);
 										if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-											ev.setCancelled(false);
+											set(ev, "setCancelled", false);
 										}
 										break;
 									case ANVIL_SPLEEF:
@@ -349,12 +351,12 @@ public class WeaponShoot implements Listener {
 									case WDROP:
 									case SPLEEF:
 									case SPLEGG:
-										ev.setCancelled(true);
+										set(ev, "setCancelled", true);
 										break;
 									case BOMB_TAG:
-										ev.setDamage(0);
+										set(ev, "setDamage", 0);
 										if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-											ev.setCancelled(false);
+											set(ev, "setCancelled", false);
 										}
 										if (damager.equals(
 												plugin.getMatchActive().getPlayerHandler().getPlayerContador())) {
@@ -386,17 +388,17 @@ public class WeaponShoot implements Listener {
 									case HORSE_RUN:
 									case RACE:
 									case RED_GREEN_LIGHT:
-										ev.setCancelled(true);
+										set(ev, "setCancelled", true);
 										break;
 									case QUAKECRAFT:
 									case HOEHOEHOE:
 									case SPLATOON:
-										ev.setCancelled(true);
+										set(ev, "setCancelled", true);
 										break;
 
 									default:
 										if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-											ev.setCancelled(false);
+											set(ev, "setCancelled", false);
 										}
 										break;
 									}
@@ -404,16 +406,16 @@ public class WeaponShoot implements Listener {
 							} else {
 								if (plugin.getMatchActive().getPlayerHandler().getPlayersSpectators()
 										.contains(damager)) {
-									ev.setCancelled(true);
+									set(ev, "setCancelled", true);
 								}
 							}
 						}
 
 					} else {
 
-						if (((player.getHealth() - ev.getDamage()) <= 0)) {
+						if (((player.getHealth() - number(ev, "getDamage")) <= 0)) {
 
-							ev.setCancelled(true);
+							set(ev, "setCancelled", true);
 							switch (plugin.getMatchActive().getMatch().getMinigame()) {
 							case SG:
 							case SW:
@@ -422,7 +424,7 @@ public class WeaponShoot implements Listener {
 							case TSG_REAL:
 							case TSW_REAL:
 								if (!plugin.getMatchActive().getAllowDamage()) {
-									ev.setCancelled(true);
+									set(ev, "setCancelled", true);
 								} else {
 									UtilsRandomEvents.mandaMensaje(plugin,
 											plugin.getMatchActive().getPlayerHandler().getPlayersSpectators(),
@@ -471,20 +473,20 @@ public class WeaponShoot implements Listener {
 							case KNOCKBACK_DUEL:
 							case BOMB_TAG:
 							case BLOCK_PARTY:
-								ev.setDamage(0);
+								set(ev, "setDamage", 0);
 								if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-									ev.setCancelled(false);
+									set(ev, "setCancelled", false);
 								}
 								break;
 							case TNT_RUN:
 							case WDROP:
 							case SPLEEF:
 							case SPLEGG:
-								ev.setCancelled(true);
+								set(ev, "setCancelled", true);
 								break;
 							case OITC:
-								if (ev.getDamager() instanceof Arrow) {
-									Arrow arrow = (Arrow) ev.getDamager();
+								if (get(ev, "getDamager") instanceof Arrow) {
+									Arrow arrow = (Arrow) get(ev, "getDamager");
 
 									if (arrow.getShooter() != null && arrow.getShooter() instanceof Player) {
 
@@ -548,8 +550,8 @@ public class WeaponShoot implements Listener {
 							case TOP_KILLER_TEAM_2:
 							case TOP_KILLER_TEAMS:
 
-								if (ev.getDamager() instanceof Arrow) {
-									Arrow arrow = (Arrow) ev.getDamager();
+								if (get(ev, "getDamager") instanceof Arrow) {
+									Arrow arrow = (Arrow) get(ev, "getDamager");
 
 									if (arrow.getShooter() != null && arrow.getShooter() instanceof Player) {
 
@@ -614,8 +616,8 @@ public class WeaponShoot implements Listener {
 								break;
 							case KOTH:
 
-								if (ev.getDamager() instanceof Arrow) {
-									Arrow arrow = (Arrow) ev.getDamager();
+								if (get(ev, "getDamager") instanceof Arrow) {
+									Arrow arrow = (Arrow) get(ev, "getDamager");
 
 									if (arrow.getShooter() != null && arrow.getShooter() instanceof Player) {
 
@@ -676,16 +678,16 @@ public class WeaponShoot implements Listener {
 							case HORSE_RUN:
 							case RACE:
 							case RED_GREEN_LIGHT:
-								ev.setCancelled(true);
+								set(ev, "setCancelled", true);
 								break;
 							case HOEHOEHOE:
 							case SPLATOON:
 							case QUAKECRAFT:
-								ev.setCancelled(true);
+								set(ev, "setCancelled", true);
 								break;
 							default:
 								if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-									ev.setCancelled(false);
+									set(ev, "setCancelled", false);
 								}
 								break;
 							}
@@ -693,8 +695,8 @@ public class WeaponShoot implements Listener {
 						} else {
 							switch (plugin.getMatchActive().getMatch().getMinigame()) {
 							case OITC:
-								if (ev.getDamager() instanceof Arrow) {
-									Arrow arrow = (Arrow) ev.getDamager();
+								if (get(ev, "getDamager") instanceof Arrow) {
+									Arrow arrow = (Arrow) get(ev, "getDamager");
 
 									if (arrow.getShooter() != null && arrow.getShooter() instanceof Player) {
 
@@ -738,12 +740,12 @@ public class WeaponShoot implements Listener {
 										}
 									} else {
 										if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-											ev.setCancelled(false);
+											set(ev, "setCancelled", false);
 										}
 									}
 								} else {
 									if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-										ev.setCancelled(false);
+										set(ev, "setCancelled", false);
 									}
 								}
 
@@ -755,10 +757,10 @@ public class WeaponShoot implements Listener {
 							case TSG_REAL:
 							case TSW_REAL:
 								if (!plugin.getMatchActive().getAllowDamage()) {
-									ev.setCancelled(true);
+									set(ev, "setCancelled", true);
 								} else {
 									if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-										ev.setCancelled(false);
+										set(ev, "setCancelled", false);
 									}
 								}
 								break;
@@ -776,7 +778,7 @@ public class WeaponShoot implements Listener {
 							case ESCAPE_FROM_BEAST:
 							case KOTH:
 								if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-									ev.setCancelled(false);
+									set(ev, "setCancelled", false);
 								}
 								break;
 
@@ -784,9 +786,9 @@ public class WeaponShoot implements Listener {
 							case KNOCKBACK_DUEL:
 							case BOMB_TAG:
 							case BLOCK_PARTY:
-								ev.setDamage(0);
+								set(ev, "setDamage", 0);
 								if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-									ev.setCancelled(false);
+									set(ev, "setCancelled", false);
 								}
 								break;
 							case TNT_RUN:
@@ -797,7 +799,7 @@ public class WeaponShoot implements Listener {
 							case HORSE_RUN:
 							case RACE:
 							case RED_GREEN_LIGHT:
-								ev.setCancelled(true);
+								set(ev, "setCancelled", true);
 								break;
 
 							case ESCAPE_ARROW:
@@ -814,18 +816,18 @@ public class WeaponShoot implements Listener {
 								} else {
 									player.damage(plugin.getReventConfig().getArrowRainDamage());
 									if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-										ev.setCancelled(false);
+										set(ev, "setCancelled", false);
 									}
 								}
 								break;
 							case HOEHOEHOE:
 							case SPLATOON:
 							case QUAKECRAFT:
-								ev.setCancelled(true);
+								set(ev, "setCancelled", true);
 								break;
 							default:
 								if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-									ev.setCancelled(false);
+									set(ev, "setCancelled", false);
 								}
 								break;
 							}
@@ -835,28 +837,70 @@ public class WeaponShoot implements Listener {
 				}
 			} else if (plugin.getMatchActive() != null
 					&& plugin.getMatchActive().getPlayerHandler().getPlayersSpectators().contains(player)) {
-				ev.setCancelled(true);
+				set(ev, "setCancelled", true);
 			}
-		} else if (ev.getVictim() instanceof Horse && ev.getPlayer() instanceof Player)
+		} else if (get(ev, "getVictim") instanceof Horse && get(ev, "getPlayer") instanceof Player)
 
 		{
-			Player player = (Player) ev.getPlayer();
+			Player player = (Player) get(ev, "getPlayer");
 			if (plugin.getMatchActive() != null
 					&& plugin.getMatchActive().getPlayerHandler().getPlayers().contains(player.getName())) {
 				plugin.getMatchActive().setDamageCounter(0);
 				if (plugin.getMatchActive().getMatch().getMinigame().getCodigo()
 						.equals(MinigameType.BATTLE_ROYALE_CABALLO.getCodigo())) {
-					ev.setDamage(0);
+					set(ev, "setDamage", 0);
 					if (plugin.getReventConfig().isHighestPriorityDamageEvents()) {
-						ev.setCancelled(false);
+						set(ev, "setCancelled", false);
 					}
 				}
 			}
-		} else if (ev.getVictim() instanceof Boat) {
-			if (plugin.getMatchActive() != null && plugin.getMatchActive().getMobs().contains(ev.getVictim())) {
-				ev.setCancelled(true);
+		} else if (get(ev, "getVictim") instanceof Boat) {
+			if (plugin.getMatchActive() != null && plugin.getMatchActive().getMobs().contains(get(ev, "getVictim"))) {
+				set(ev, "setCancelled", true);
 			}
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public static void register(RandomEvents plugin) {
+		try {
+			Class<?> raw = Class.forName("com.shampaggon.crackshot.events.WeaponDamageEntityEvent");
+			if (!Event.class.isAssignableFrom(raw)) throw new IllegalStateException("CrackShot event type is invalid");
+			WeaponShoot listener = new WeaponShoot(plugin);
+			EventExecutor executor = (ignored, event) -> listener.weaponDamage(event);
+			plugin.getServer().getPluginManager().registerEvent((Class<? extends Event>) raw, listener,
+					EventPriority.MONITOR, executor, plugin);
+			plugin.getLogger().info("[RandomEvents] CrackShot hook registered.");
+		} catch (ClassNotFoundException e) {
+			plugin.getLogger().warning("CrackShot is present but its damage event API could not be found; weapon integration is disabled.");
+		}
+	}
+
+	private static Object get(Object event, String name) {
+		try { return event.getClass().getMethod(name).invoke(event); }
+		catch (ReflectiveOperationException e) { throw new IllegalStateException("CrackShot event missing " + name, e); }
+	}
+
+	private static double number(Object event, String name) {
+		Object value = get(event, name);
+		return value instanceof Number ? ((Number) value).doubleValue() : 0.0;
+	}
+
+	private static void set(Object event, String name, Object value) {
+		try {
+			for (Method method : event.getClass().getMethods()) {
+				if (!method.getName().equals(name) || method.getParameterCount() != 1) continue;
+				Class<?> parameter = method.getParameterTypes()[0];
+				Object argument = value;
+				if (value instanceof Number && (parameter == double.class || parameter == Double.class)) argument = ((Number) value).doubleValue();
+				else if (value instanceof Number && (parameter == float.class || parameter == Float.class)) argument = ((Number) value).floatValue();
+				else if (value instanceof Boolean && (parameter == boolean.class || parameter == Boolean.class)) argument = value;
+				else if (!parameter.isInstance(value)) continue;
+				method.invoke(event, argument);
+				return;
+			}
+			throw new NoSuchMethodException(name);
+		} catch (ReflectiveOperationException e) { throw new IllegalStateException("CrackShot event missing " + name, e); }
 	}
 
 	public RandomEvents getPlugin() {

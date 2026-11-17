@@ -27,8 +27,8 @@ import org.bukkit.potion.PotionEffectType;
 import com.adri1711.randomevents.RandomEvents;
 import com.adri1711.randomevents.match.enums.MinigameType;
 import com.adri1711.randomevents.util.UtilsRandomEvents;
-import com.adri1711.util.enums.XMaterial;
-import com.adri1711.util.enums.XSound;
+import com.adri1711.randomevents.compat.XMaterial;
+import com.adri1711.randomevents.compat.XSound;
 
 public class Death implements Listener {
 

@@ -2,19 +2,19 @@ package com.adri1711.randomevents.match.enums;
 
 public enum CreacionKit {
 
-	NAME(0, "§6§lChoose Name"),
+	NAME(0, "Â§6Â§lChoose Name"),
 	
-	ITEM_DESCRIPTIVE(1, "§6§Put the item on your hand and say 'Done' (It can have custom name or lore, if not it will take the default name and lore from messages.yml)"),
+	ITEM_DESCRIPTIVE(1, "Â§6Â§Put the item on your hand and say 'Done' (It can have custom name or lore, if not it will take the default name and lore from messages.yml)"),
 
-	PERMISSION_OPTIONAL(2, "§6§lWrite the permission needed to use this kit"),
+	PERMISSION_OPTIONAL(2, "Â§6Â§lWrite the permission needed to use this kit"),
 
-	INVENTORY(3, "§6§lTake the inventory for the players and say 'Done' "),
+	INVENTORY(3, "Â§6Â§lTake the inventory for the players and say 'Done' "),
 
-	SAVE(997, "§6§lYou are about to save a Kit, put 'Y' to confirm or 'N' to continue creating"),
+	SAVE(997, "Â§6Â§lYou are about to save a Kit, put 'Y' to confirm or 'N' to continue creating"),
 
-	DELETE(998, "§6§lChoose the field you want to remove"),
+	DELETE(998, "Â§6Â§lChoose the field you want to remove"),
 
-	CANCEL(999, "§6§lYou are about to cancel a Kit, put 'Y' to confirm or 'N' to continue creating");
+	CANCEL(999, "Â§6Â§lYou are about to cancel a Kit, put 'Y' to confirm or 'N' to continue creating");
 
 	private Integer position;
 	private String message;

@@ -74,11 +74,11 @@ import com.adri1711.randomevents.match.utils.BannedPlayers;
 import com.adri1711.randomevents.match.utils.Cuboid;
 import com.adri1711.randomevents.match.utils.InventoryPers;
 import com.adri1711.randomevents.stats.Stats;
-import com.adri1711.util.enums.Particle1711;
-import com.adri1711.util.enums.ParticleDisplay;
-import com.adri1711.util.enums.XMaterial;
-import com.adri1711.util.enums.XParticle;
-import com.adri1711.util.enums.XSound;
+import com.adri1711.randomevents.compat.Particle1711;
+import com.adri1711.randomevents.compat.ParticleDisplay;
+import com.adri1711.randomevents.compat.XMaterial;
+import com.adri1711.randomevents.compat.XParticle;
+import com.adri1711.randomevents.compat.XSound;
 import com.google.common.io.Files;
 
 public class UtilsRandomEvents {
@@ -153,7 +153,7 @@ public class UtilsRandomEvents {
 
 				File bossFile = new File(String.valueOf(plugin.getDataFolder().getPath()) + "//events",
 						match.getMinigame().getCodigo() + "_"
-								+ ChatColor.stripColor(match.getName().replaceAll("<color>", "ง")).replaceAll(" ", "_")
+								+ ChatColor.stripColor(match.getName().replaceAll("<color>", "ยง")).replaceAll(" ", "_")
 								+ ".json");
 				if (!bossFile.exists()) {
 					bossFile.createNewFile();
@@ -220,7 +220,7 @@ public class UtilsRandomEvents {
 				}
 
 				File bossFile = new File(String.valueOf(plugin.getDataFolder().getPath()) + "//waterdrop",
-						ChatColor.stripColor(waterDrop.getName().replaceAll("<color>", "ง")).replaceAll(" ", "_")
+						ChatColor.stripColor(waterDrop.getName().replaceAll("<color>", "ยง")).replaceAll(" ", "_")
 								+ ".json");
 				if (!bossFile.exists()) {
 					bossFile.createNewFile();
@@ -266,7 +266,7 @@ public class UtilsRandomEvents {
 				}
 
 				File bossFile = new File(String.valueOf(plugin.getDataFolder().getPath()) + "//kits",
-						ChatColor.stripColor(kit.getName().replaceAll("<color>", "ง")).replaceAll(" ", "_") + ".json");
+						ChatColor.stripColor(kit.getName().replaceAll("<color>", "ยง")).replaceAll(" ", "_") + ".json");
 				if (!bossFile.exists()) {
 					bossFile.createNewFile();
 				} else {
@@ -336,7 +336,7 @@ public class UtilsRandomEvents {
 
 					File bossFile = new File(String.valueOf(plugin.getDataFolder().getPath()) + "//events",
 							match.getMinigame().getCodigo() + "_" + ChatColor
-									.stripColor(match.getName().replaceAll("<color>", "ง")).replaceAll(" ", "_")
+									.stripColor(match.getName().replaceAll("<color>", "ยง")).replaceAll(" ", "_")
 									+ ".json");
 					if (!bossFile.exists()) {
 						bossFile.createNewFile();
@@ -390,7 +390,7 @@ public class UtilsRandomEvents {
 
 					File bossFile = new File(String.valueOf(plugin.getDataFolder().getPath()) + "//events",
 							match.getMinigame().getCodigo() + "_" + ChatColor
-									.stripColor(match.getName().replaceAll("<color>", "ง")).replaceAll(" ", "_")
+									.stripColor(match.getName().replaceAll("<color>", "ยง")).replaceAll(" ", "_")
 									+ ".json");
 					if (!bossFile.exists()) {
 						bossFile.createNewFile();
@@ -443,7 +443,7 @@ public class UtilsRandomEvents {
 
 					File bossFile = new File(String.valueOf(plugin.getDataFolder().getPath()) + "//events",
 							match.getMinigame().getCodigo() + "_" + ChatColor
-									.stripColor(match.getName().replaceAll("<color>", "ง")).replaceAll(" ", "_")
+									.stripColor(match.getName().replaceAll("<color>", "ยง")).replaceAll(" ", "_")
 									+ ".json");
 					if (!bossFile.exists()) {
 						bossFile.createNewFile();
@@ -497,7 +497,7 @@ public class UtilsRandomEvents {
 
 					File bossFile = new File(String.valueOf(plugin.getDataFolder().getPath()) + "//events",
 							match.getMinigame().getCodigo() + "_" + ChatColor
-									.stripColor(match.getName().replaceAll("<color>", "ง")).replaceAll(" ", "_")
+									.stripColor(match.getName().replaceAll("<color>", "ยง")).replaceAll(" ", "_")
 									+ ".json");
 					if (!bossFile.exists()) {
 						bossFile.createNewFile();
@@ -545,7 +545,7 @@ public class UtilsRandomEvents {
 
 			File bossFile = new File(String.valueOf(plugin.getDataFolder().getPath()) + "//events",
 					match.getMinigame().getCodigo() + "_"
-							+ ChatColor.stripColor(match.getName().replaceAll("<color>", "ง")).replaceAll(" ", "_")
+							+ ChatColor.stripColor(match.getName().replaceAll("<color>", "ยง")).replaceAll(" ", "_")
 							+ ".json");
 			if (bossFile.exists()) {
 				bossFile.delete();
@@ -1031,12 +1031,12 @@ public class UtilsRandomEvents {
 			s = ChatColor.translateAlternateColorCodes('&', s);
 
 		} catch (Exception e) {
-			s = s.replaceAll("&", "ง");
+			s = s.replaceAll("&", "ยง");
 		}
 		// try {
 		// s = ChatColor.translateAlternateColorCodes('&', s);
 		// } catch (Exception e) {
-		// s = s.replaceAll("&", "ง");
+		// s = s.replaceAll("&", "ยง");
 		// }
 		resultado = s + " ( " + match.getPlayerHandler().getPlayers().size() + " / "
 				+ match.getMatch().getAmountPlayers() + " )";
@@ -1078,7 +1078,7 @@ public class UtilsRandomEvents {
 
 	public static void mandaMensaje(RandomEvents plugin, List<Player> players, String message, Boolean tag,
 			Boolean allowTitle, Boolean forceTitle) {
-		message = message.replaceAll("<color>", "ง");
+		message = message.replaceAll("<color>", "ยง");
 		if (tag) {
 			message = plugin.getLanguage().getTagPlugin() + message;
 		}
@@ -1102,9 +1102,9 @@ public class UtilsRandomEvents {
 	// for (String msg : messages) {
 	// if (tag) {
 	// message += plugin.getLanguage().getTagPlugin() +
-	// msg.replaceAll("<color>", "ง") + "\n";
+	// msg.replaceAll("<color>", "ยง") + "\n";
 	// } else {
-	// message += msg.replaceAll("<color>", "ง") + "\n";
+	// message += msg.replaceAll("<color>", "ยง") + "\n";
 	// }
 	// }
 	// for (Player p : players) {
@@ -1113,7 +1113,7 @@ public class UtilsRandomEvents {
 	// }
 
 	public static void tiraCohete(Location l) {
-		Firework fw = (Firework) l.getWorld().spawnEntity(l, EntityType.FIREWORK);
+		Firework fw = (Firework) l.getWorld().spawnEntity(l, EntityType.FIREWORK_ROCKET);
 		FireworkMeta fwm = fw.getFireworkMeta();
 
 		Random r = new Random();
@@ -1247,21 +1247,21 @@ public class UtilsRandomEvents {
 	}
 
 	public static String cambiarMensajeConEtiqueta(String message) {
-		return message.replaceAll("&", "<color>").replaceAll("ง", "<color>");
+		return message.replaceAll("&", "<color>").replaceAll("ยง", "<color>");
 	}
 
 	public static void normalizaColorsMatch(Match match) {
-		match.setName(match.getName().replace("<color>", "ง"));
+		match.setName(match.getName().replace("<color>", "ยง"));
 
 	}
 
 	public static void normalizaColorsWaterDrop(WaterDropStep match) {
-		match.setName(match.getName().replace("<color>", "ง"));
+		match.setName(match.getName().replace("<color>", "ยง"));
 
 	}
 
 	public static void normalizaColorsKit(Kit match) {
-		match.setName(match.getName().replace("<color>", "ง"));
+		match.setName(match.getName().replace("<color>", "ยง"));
 
 	}
 
@@ -1613,7 +1613,7 @@ public class UtilsRandomEvents {
 					item = new ItemStack(minigame.getMaterial());
 				}
 				ItemMeta itemMeta = item.getItemMeta();
-				itemMeta.setDisplayName("ง6งl" + minigame.getMessage(plugin));
+				itemMeta.setDisplayName("ยง6ยงl" + minigame.getMessage(plugin));
 				List<String> lore = new ArrayList<String>();
 				Integer wins = estadisticas.getWins(minigame.getCodigo());
 				Integer tries = estadisticas.getTries(minigame.getCodigo());
@@ -1626,7 +1626,7 @@ public class UtilsRandomEvents {
 				itemMeta.setLore(lore);
 
 				itemMeta.getItemFlags().add(ItemFlag.HIDE_ATTRIBUTES);
-				itemMeta.getItemFlags().add(ItemFlag.HIDE_POTION_EFFECTS);
+				itemMeta.getItemFlags().add(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
 				itemMeta.getItemFlags().add(ItemFlag.HIDE_ENCHANTS);
 
 				item.setItemMeta(itemMeta);
@@ -1666,7 +1666,7 @@ public class UtilsRandomEvents {
 			lore.add(plugin.getLanguage().getStatsWinsRatio() + ratio.toPlainString());
 			itemMeta.setLore(lore);
 			itemMeta.getItemFlags().add(ItemFlag.HIDE_ATTRIBUTES);
-			itemMeta.getItemFlags().add(ItemFlag.HIDE_POTION_EFFECTS);
+			itemMeta.getItemFlags().add(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
 			itemMeta.getItemFlags().add(ItemFlag.HIDE_ENCHANTS);
 			item.setItemMeta(itemMeta);
 			inv.setItem(position, item);
@@ -2016,7 +2016,7 @@ public class UtilsRandomEvents {
 	public static String enviaInfoCreacion(Match match, Player player, RandomEvents plugin) {
 		String info = plugin.getLanguage().getTagPlugin() + " ";
 		if (match.getMinigame() == null) {
-			info += Constantes.SALTO_LINEA + "งeงl " + Creacion.MINIGAME_TYPE.ordinal() + " - "
+			info += Constantes.SALTO_LINEA + "ยงeยงl " + Creacion.MINIGAME_TYPE.ordinal() + " - "
 					+ Creacion.MINIGAME_TYPE.getMessage();
 
 		} else {
@@ -2024,45 +2024,45 @@ public class UtilsRandomEvents {
 			for (Creacion c : Creacion.getCreaciones(match)) {
 				if (!match.getMinigame().equals(MinigameType.WDROP)
 						|| (match.getMinigame().equals(MinigameType.WDROP) && !c.equals(Creacion.ARENA_SPAWNS))) {
-					info += Constantes.SALTO_LINEA + "งeงl " + c.getPosition() + " - " + c.getName();
+					info += Constantes.SALTO_LINEA + "ยงeยงl " + c.getPosition() + " - " + c.getName();
 
 					switch (c) {
 
 					case MINIGAME_TYPE:
 						if (match.getMinigame() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getMinigame();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getMinigame();
 						}
 
 						break;
 					case BATTLE_NAME:
 						if (match.getName() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getName();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getName();
 						}
 
 						break;
 					case PERMISSION_OPTIONAL:
 						if (match.getPermission() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getPermission();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getPermission();
 						}
 
 						break;
 					case USE_OWN_INVENTORY:
 						if (match.getUseOwnInventory() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 									+ (match.getUseOwnInventory() ? "Yes" : "No");
 						}
 
 						break;
 					case ALL_BLOCKS_ALLOWED:
 						if (match.getAllMaterialAllowed() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 									+ (match.getAllMaterialAllowed() ? "Yes" : "No");
 						}
 
 						break;
 					case GAMEMODE:
 						if (match.getGamemode() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 									+ match.getGamemode().toString();
 						}
 
@@ -2070,7 +2070,7 @@ public class UtilsRandomEvents {
 					case COMMANDS_ON_START_OPTIONAL:
 						if (match.getCommandsOnStart() != null && !match.getCommandsOnStart().isEmpty()) {
 							for (String s : match.getCommandsOnStart()) {
-								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + s;
+								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + s;
 							}
 						}
 
@@ -2078,7 +2078,7 @@ public class UtilsRandomEvents {
 					case COMMANDS_ON_KILL_OPTIONAL:
 						if (match.getCommandsOnKill() != null && !match.getCommandsOnKill().isEmpty()) {
 							for (String s : match.getCommandsOnKill()) {
-								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + s;
+								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + s;
 							}
 						}
 
@@ -2086,7 +2086,7 @@ public class UtilsRandomEvents {
 					case COMMANDS_ON_ELIMINATION_OPTIONAL:
 						if (match.getCommandsOnElimination() != null && !match.getCommandsOnElimination().isEmpty()) {
 							for (String s : match.getCommandsOnElimination()) {
-								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + s;
+								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + s;
 							}
 						}
 
@@ -2094,34 +2094,34 @@ public class UtilsRandomEvents {
 
 					case AMOUNT_PLAYERS:
 						if (match.getAmountPlayers() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getAmountPlayers();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getAmountPlayers();
 						}
 						break;
 					case AMOUNT_PLAYERS_MIN:
 						if (match.getAmountPlayersMin() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 									+ match.getAmountPlayersMin();
 						}
 						break;
 
 					case NUMBER_OF_TEAMS:
 						if (match.getNumberOfTeams() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getNumberOfTeams();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getNumberOfTeams();
 						}
 						break;
 					case NUMBER_OF_SEEKERS:
 						if (match.getNumberOfSeekers() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getNumberOfSeekers();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getNumberOfSeekers();
 						}
 						break;
 					case ID_NPC:
 						if (match.getNPCId() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getNPCId();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getNPCId();
 						}
 						break;
 					case SPAWN_PLAYER:
 						if (match.getPlayerSpawn() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 									+ match.getPlayerSpawn().getWorld().getName() + match.getPlayerSpawn().getX() + ", "
 									+ match.getPlayerSpawn().getY() + ", " + match.getPlayerSpawn().getZ();
 						}
@@ -2132,20 +2132,20 @@ public class UtilsRandomEvents {
 					case ANOTHER_TEAM_SPAWNS:
 						if (match.getSpawns() != null && !match.getSpawns().isEmpty()) {
 
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9Spawns completed";
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9Spawns completed";
 						}
 						break;
 					case SPECTATOR_SPAWNS:
 						if (match.getSpectatorSpawns() != null && !match.getSpectatorSpawns().isEmpty()) {
 
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9Spawns completed";
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9Spawns completed";
 						}
 						break;
 					case REWARDS:
 					case ANOTHER_REWARDS:
 						if (match.getRewards() != null && !match.getRewards().isEmpty()) {
 							for (String s : match.getRewards()) {
-								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + s;
+								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + s;
 							}
 						}
 
@@ -2153,7 +2153,7 @@ public class UtilsRandomEvents {
 					case KITS:
 						if (match.getKits() != null && !match.getKits().isEmpty()) {
 							for (String s : match.getKits()) {
-								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + s;
+								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + s;
 							}
 						}
 						break;
@@ -2166,12 +2166,12 @@ public class UtilsRandomEvents {
 					case SECONDS_TO_SPAWN_BEAST:
 
 						if (match.getSecondsMobSpawn() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getSecondsMobSpawn();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getSecondsMobSpawn();
 						}
 						break;
 					case MOB_NAME:
 						if (match.getMob() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getMob();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getMob();
 						}
 						break;
 					case MOB_SPAWN:
@@ -2180,50 +2180,50 @@ public class UtilsRandomEvents {
 					case ANOTHER_ENTITY_SPAWNS:
 						if (match.getEntitySpawns() != null && !match.getEntitySpawns().isEmpty()) {
 
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9Spawns completed";
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9Spawns completed";
 						}
 						break;
 					case PLAY_TIME:
 					case SHRINK_TIME:
 						if (match.getTiempoPartida() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getTiempoPartida();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getTiempoPartida();
 						}
 						break;
 					case REFILL_CHEST:
 						if (match.getTimeRefill() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getTimeRefill();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getTimeRefill();
 						}
 						break;
 					case TIMER_BLOCK_DISAPPEAR:
 						if (match.getBlockTimer() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getBlockTimer();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getBlockTimer();
 						}
 						break;
 					case TIMER_DECREASE_TIME:
 						if (match.getBlockDecreaseTimer() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 									+ match.getBlockDecreaseTimer();
 						}
 						break;
 					case COLOR_APPEAR_TIME:
 						if (match.getColorTimer() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getColorTimer();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getColorTimer();
 						}
 						break;
 					case COLOR_APPEAR_DECREASE_TIME:
 						if (match.getColorDecreaseTimer() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 									+ match.getColorDecreaseTimer();
 						}
 						break;
 					case SHRINK_BLOCKS:
 						if (match.getShrinkBlocks() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getShrinkBlocks();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getShrinkBlocks();
 						}
 						break;
 					case NO_MOVE_TIME:
 						if (match.getSecondsToBegin() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + match.getSecondsToBegin();
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + match.getSecondsToBegin();
 						}
 						break;
 					case ARROW_LOCATION1:
@@ -2232,21 +2232,21 @@ public class UtilsRandomEvents {
 					case GOAL_LOCATION1:
 					case MAP_LOCATION1:
 						if (match.getLocation1() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 									+ match.getLocation1().getWorld().getName() + match.getLocation1().getX() + ", "
 									+ match.getLocation1().getY() + ", " + match.getLocation1().getZ();
 						}
 						break;
 					case GLASS_LOCATION1:
 						if (match.getAuxLocation1() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 									+ match.getAuxLocation1().getWorld().getName() + match.getAuxLocation1().getX()
 									+ ", " + match.getAuxLocation1().getY() + ", " + match.getAuxLocation1().getZ();
 						}
 						break;
 					case GLASS_LOCATION2:
 						if (match.getAuxLocation2() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 									+ match.getAuxLocation2().getWorld().getName() + match.getAuxLocation2().getX()
 									+ ", " + match.getAuxLocation2().getY() + ", " + match.getAuxLocation2().getZ();
 						}
@@ -2257,14 +2257,14 @@ public class UtilsRandomEvents {
 					case GOAL_LOCATION2:
 					case MAP_LOCATION2:
 						if (match.getLocation2() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 									+ match.getLocation2().getWorld().getName() + match.getLocation2().getX() + ", "
 									+ match.getLocation2().getY() + ", " + match.getLocation2().getZ();
 						}
 						break;
 					case SPAWN_BEAST:
 						if (match.getBeastSpawn() != null) {
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 									+ match.getBeastSpawn().getWorld().getName() + match.getBeastSpawn().getX() + ", "
 									+ match.getBeastSpawn().getY() + ", " + match.getBeastSpawn().getZ();
 						}
@@ -2272,25 +2272,25 @@ public class UtilsRandomEvents {
 					case INVENTORY_BEAST:
 						if (match.getInventoryBeast() != null) {
 
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9Inventory completed";
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9Inventory completed";
 						}
 						break;
 					case TNT_TAG_HEAD:
 						if (match.getHead() != null) {
 
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9Head set";
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9Head set";
 						}
 						break;
 					case INVENTORY_RUNNERS:
 						if (match.getInventoryRunners() != null) {
 
-							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9Inventory completed";
+							info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9Inventory completed";
 						}
 						break;
 					case INVENTORY_CHESTS:
 						if (match.getInventoryChests() != null) {
 							for (ItemStack i : match.getInventoryChests().getContents()) {
-								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9" + i.getType() + "x"
+								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9" + i.getType() + "x"
 										+ i.getAmount();
 							}
 						}
@@ -2300,7 +2300,7 @@ public class UtilsRandomEvents {
 					case ANOTHER_MATERIAL_SPLEEF:
 						if (match.getDatas() != null && !match.getDatas().isEmpty()) {
 							for (MaterialData s : match.getDatas()) {
-								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 										+ s.getItemType().toString() + " : " + s.getData();
 							}
 						}
@@ -2308,7 +2308,7 @@ public class UtilsRandomEvents {
 					case WATER_DROP_SCENES:
 						if (match.getScenes() != null && !match.getScenes().isEmpty()) {
 							for (String s : match.getScenes()) {
-								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + s;
+								info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + s;
 							}
 						}
 						break;
@@ -2537,7 +2537,7 @@ public class UtilsRandomEvents {
 	public static void spawnParticles(Particle1711 particle, RandomEvents plugin, Location location) {
 		if (plugin.getReventConfig().isUseParticles()) {
 			try {
-				ParticleDisplay pa = ParticleDisplay.display(plugin.getApi(), location, particle);
+				ParticleDisplay pa = ParticleDisplay.display(plugin, location, particle);
 
 				String part = plugin.getReventConfig().getParticleType().toUpperCase();
 				if (part.equals("RANDOM")) {
@@ -3014,20 +3014,20 @@ public class UtilsRandomEvents {
 		String info = plugin.getLanguage().getTagPlugin() + " ";
 
 		for (CreacionWaterDrop c : CreacionWaterDrop.values()) {
-			info += Constantes.SALTO_LINEA + "งeงl " + c.getPosition() + " - " + c.toString();
+			info += Constantes.SALTO_LINEA + "ยงeยงl " + c.getPosition() + " - " + c.toString();
 
 			switch (c) {
 
 			case NAME:
 				if (waterDrop.getName() != null) {
-					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + waterDrop.getName();
+					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + waterDrop.getName();
 				}
 
 				break;
 
 			case SPAWN:
 				if (waterDrop.getSpawn() != null) {
-					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 							+ waterDrop.getSpawn().getWorld().getName() + waterDrop.getSpawn().getX() + ", "
 							+ waterDrop.getSpawn().getY() + ", " + waterDrop.getSpawn().getZ();
 				}
@@ -3035,7 +3035,7 @@ public class UtilsRandomEvents {
 
 			case GOAL_LOCATION1:
 				if (waterDrop.getGoalLoc1() != null) {
-					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 							+ waterDrop.getGoalLoc1().getWorld().getName() + waterDrop.getGoalLoc1().getX() + ", "
 							+ waterDrop.getGoalLoc1().getY() + ", " + waterDrop.getGoalLoc1().getZ();
 				}
@@ -3043,7 +3043,7 @@ public class UtilsRandomEvents {
 
 			case GOAL_LOCATION2:
 				if (waterDrop.getGoalLoc2() != null) {
-					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 "
+					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 "
 							+ waterDrop.getGoalLoc2().getWorld().getName() + waterDrop.getGoalLoc2().getX() + ", "
 							+ waterDrop.getGoalLoc2().getY() + ", " + waterDrop.getGoalLoc2().getZ();
 				}
@@ -3062,32 +3062,32 @@ public class UtilsRandomEvents {
 		String info = plugin.getLanguage().getTagPlugin() + " ";
 
 		for (CreacionKit c : CreacionKit.values()) {
-			info += Constantes.SALTO_LINEA + "งeงl " + c.getPosition() + " - " + c.toString();
+			info += Constantes.SALTO_LINEA + "ยงeยงl " + c.getPosition() + " - " + c.toString();
 
 			switch (c) {
 
 			case NAME:
 				if (kit.getName() != null) {
-					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + kit.getName();
+					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + kit.getName();
 				}
 
 				break;
 
 			case PERMISSION_OPTIONAL:
 				if (kit.getPermission() != null) {
-					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + kit.getPermission();
+					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + kit.getPermission();
 
 				}
 				break;
 			case INVENTORY:
 				if (kit.getInventory() != null) {
-					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + "Inventory completed";
+					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + "Inventory completed";
 
 				}
 				break;
 			case ITEM_DESCRIPTIVE:
 				if (kit.getItem() != null) {
-					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ง9 " + kit.getItem().toString();
+					info += Constantes.SALTO_LINEA + Constantes.TABULACION + "ยง9 " + kit.getItem().toString();
 
 				}
 				break;
@@ -3279,7 +3279,7 @@ public class UtilsRandomEvents {
 				cabeza = new ItemStack(match.getMinigame().getMaterial());
 			}
 			ItemMeta cabezaMeta = cabeza.getItemMeta();
-			cabezaMeta.setDisplayName("งeงl" + match.getName());
+			cabezaMeta.setDisplayName("ยงeยงl" + match.getName());
 
 			List<String> lore = new ArrayList<String>();
 			if (p.hasPermission(Constantes.PERM_COOLDOWN_BYPASS)) {
@@ -3330,7 +3330,7 @@ public class UtilsRandomEvents {
 			}
 			cabezaMeta.setLore(lore);
 			cabezaMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-			cabezaMeta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+			cabezaMeta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
 			cabezaMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			cabeza.setItemMeta(cabezaMeta);
 			inv.setItem(i - (page * 36), cabeza);
@@ -3381,7 +3381,7 @@ public class UtilsRandomEvents {
 					cabezaMeta.setLore(plugin.getLanguage().getKitDefaultLore());
 				}
 				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_ATTRIBUTES);
-				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_POTION_EFFECTS);
+				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
 				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_ENCHANTS);
 
 				cabeza.setItemMeta(cabezaMeta);
@@ -3430,7 +3430,7 @@ public class UtilsRandomEvents {
 				cabezaMeta.setLore(lore);
 
 				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_ATTRIBUTES);
-				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_POTION_EFFECTS);
+				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
 				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_ENCHANTS);
 				cabeza.setItemMeta(cabezaMeta);
 				inv.setItem(i, cabeza);
@@ -3632,7 +3632,7 @@ public class UtilsRandomEvents {
 
 	public static void invinciblePlayer(Player player, RandomEvents plugin) {
 		if (plugin.getReventConfig().getInvincibleAfterGame() > 0) {
-			player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,
+			player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE,
 					plugin.getReventConfig().getInvincibleAfterGame(), 20));
 		}
 
@@ -3644,17 +3644,7 @@ public class UtilsRandomEvents {
 		Map<XMaterial, List<Location>> mapa = new HashMap<XMaterial, List<Location>>();
 		for (Location l : blockPartyBlocks) {
 			XMaterial xmat = blocksBlockParty.get(r.nextInt(blocksBlockParty.size()));
-			try {
-				l.getBlock().setType(xmat.parseMaterial());
-				l.getBlock().setData(xmat.getData());
-			} catch (Exception | NoSuchMethodError e) {
-				try {
-					l.getBlock().getState().setData(new MaterialData(xmat.parseMaterial()));
-				} catch (Exception | NoSuchMethodError e2) {
-					l.getBlock().setType(xmat.parseMaterial());
-
-				}
-			}
+			l.getBlock().setType(xmat.parseMaterial(), false);
 			List<Location> locations = new ArrayList<Location>();
 			if (mapa.containsKey(xmat)) {
 				locations = mapa.get(xmat);
@@ -3701,8 +3691,8 @@ public class UtilsRandomEvents {
 					if (block != null && block.getType() != null) {
 						// XMaterial.WHITE_STAINED_GLASS
 						XMaterial material = XMaterial.matchXMaterial(block.getType());
-						switch (material) {
-						case WHITE_STAINED_GLASS:
+						switch (material.name()) {
+						case "WHITE_STAINED_GLASS":
 							color = "WHITE";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3712,7 +3702,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case TINTED_GLASS:
+						case "TINTED_GLASS":
 							color = "TINTED";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3722,7 +3712,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case BLACK_STAINED_GLASS:
+						case "BLACK_STAINED_GLASS":
 							color = "BLACK";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3732,7 +3722,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case BLUE_STAINED_GLASS:
+						case "BLUE_STAINED_GLASS":
 							color = "BLUE";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3742,7 +3732,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case BROWN_STAINED_GLASS:
+						case "BROWN_STAINED_GLASS":
 							color = "BROWN";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3752,7 +3742,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case CYAN_STAINED_GLASS:
+						case "CYAN_STAINED_GLASS":
 							color = "CYAN";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3762,7 +3752,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case GRAY_STAINED_GLASS:
+						case "GRAY_STAINED_GLASS":
 							color = "GRAY";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3772,7 +3762,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case GREEN_STAINED_GLASS:
+						case "GREEN_STAINED_GLASS":
 							color = "GREEN";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3782,7 +3772,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case LIGHT_BLUE_STAINED_GLASS:
+						case "LIGHT_BLUE_STAINED_GLASS":
 							color = "LIGHT_BLUE";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3792,7 +3782,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case LIGHT_GRAY_STAINED_GLASS:
+						case "LIGHT_GRAY_STAINED_GLASS":
 							color = "LIGHT_GRAY";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3802,7 +3792,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case LIME_STAINED_GLASS:
+						case "LIME_STAINED_GLASS":
 							color = "LIME";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3812,7 +3802,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case MAGENTA_STAINED_GLASS:
+						case "MAGENTA_STAINED_GLASS":
 							color = "MAGENTA";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3822,7 +3812,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case ORANGE_STAINED_GLASS:
+						case "ORANGE_STAINED_GLASS":
 							color = "ORANGE";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3832,7 +3822,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case PINK_STAINED_GLASS:
+						case "PINK_STAINED_GLASS":
 							color = "PINK";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3842,7 +3832,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case PURPLE_STAINED_GLASS:
+						case "PURPLE_STAINED_GLASS":
 							color = "PURPLE";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3852,7 +3842,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case RED_STAINED_GLASS:
+						case "RED_STAINED_GLASS":
 							color = "RED";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3862,7 +3852,7 @@ public class UtilsRandomEvents {
 								glassLocations.put(color, locations);
 							}
 							break;
-						case YELLOW_STAINED_GLASS:
+						case "YELLOW_STAINED_GLASS":
 							color = "YELLOW";
 							if (glassLocations.containsKey(color)) {
 								glassLocations.get(color).add(block.getLocation());
@@ -3901,7 +3891,7 @@ public class UtilsRandomEvents {
 
 	public static String getMatchNameByMatch(Match match) {
 		return match.getMinigame().getCodigo() + "_"
-				+ ChatColor.stripColor(match.getName().replaceAll("<color>", "ง")).replaceAll(" ", "_");
+				+ ChatColor.stripColor(match.getName().replaceAll("<color>", "ยง")).replaceAll(" ", "_");
 	}
 
 }

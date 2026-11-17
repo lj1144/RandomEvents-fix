@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 import com.adri1711.randomevents.RandomEvents;
 import com.adri1711.randomevents.util.Constantes;
 import com.adri1711.randomevents.util.UtilsRandomEvents;
-import com.adri1711.util.enums.XMaterial;
+import com.adri1711.randomevents.compat.XMaterial;
 
 public class PickUp implements Listener {
 

@@ -16,11 +16,11 @@ import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import com.adri1711.randomevents.RandomEvents;
 import com.adri1711.randomevents.match.WaterDropStepActive;
 import com.adri1711.randomevents.util.UtilsRandomEvents;
-import com.adri1711.util.enums.Particle1711;
-import com.adri1711.util.enums.ParticleDisplay;
-import com.adri1711.util.enums.XMaterial;
-import com.adri1711.util.enums.XParticle;
-import com.adri1711.util.enums.XSound;
+import com.adri1711.randomevents.compat.Particle1711;
+import com.adri1711.randomevents.compat.ParticleDisplay;
+import com.adri1711.randomevents.compat.XMaterial;
+import com.adri1711.randomevents.compat.XParticle;
+import com.adri1711.randomevents.compat.XSound;
 
 public class Move implements Listener {
 
@@ -453,7 +453,7 @@ public class Move implements Listener {
 					UtilsRandomEvents.playSound(plugin, player, XSound.ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR);
 					Location loc = plugin.getMatchActive().getMatch().getEntitySpawns().get(
 							plugin.getRandom().nextInt(plugin.getMatchActive().getMatch().getEntitySpawns().size()));
-					ParticleDisplay pa = ParticleDisplay.display(plugin.getApi(), loc, Particle1711.REDSTONE);
+					ParticleDisplay pa = ParticleDisplay.display(plugin, loc, Particle1711.REDSTONE);
 					Location locEnd = player.getLocation();
 					locEnd.setY(locEnd.getY() + 1);
 					XParticle.line(loc, locEnd, 0.5, pa);

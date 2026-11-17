@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 
 import com.adri1711.randomevents.match.Kit;
-import com.adri1711.util.FastBoard;
+import com.adri1711.randomevents.compat.FastBoard;
 
 public class MatchPlayerHandler {
 

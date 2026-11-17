@@ -20,7 +20,7 @@ import com.adri1711.randomevents.match.enums.MinigameType;
 import com.adri1711.randomevents.match.utils.RangePlayers;
 import com.adri1711.randomevents.util.Constantes;
 import com.adri1711.randomevents.util.UtilsRandomEvents;
-import com.adri1711.util.enums.XSound;
+import com.adri1711.randomevents.compat.XSound;
 
 public class TournamentActive {
 
@@ -309,7 +309,7 @@ public class TournamentActive {
 				String info = plugin.getLanguage().getTagPlugin() + plugin.getLanguage().getTournamentAlive()
 						+ Constantes.SALTO_LINEA;
 				for (Player p : playersGanadores) {
-					info += "ง6งl" + p.getName() + ", ";
+					info += "ยง6ยงl" + p.getName() + ", ";
 				}
 				info = info.substring(0, info.length() - 2);
 				for (Player p : playersSpectators) {

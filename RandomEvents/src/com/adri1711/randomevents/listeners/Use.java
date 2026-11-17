@@ -59,11 +59,11 @@ import com.adri1711.randomevents.match.enums.MinigameType;
 import com.adri1711.randomevents.match.enums.Petos;
 import com.adri1711.randomevents.util.Constantes;
 import com.adri1711.randomevents.util.UtilsRandomEvents;
-import com.adri1711.util.enums.Particle1711;
-import com.adri1711.util.enums.ParticleDisplay;
-import com.adri1711.util.enums.XMaterial;
-import com.adri1711.util.enums.XParticle;
-import com.adri1711.util.enums.XSound;
+import com.adri1711.randomevents.compat.Particle1711;
+import com.adri1711.randomevents.compat.ParticleDisplay;
+import com.adri1711.randomevents.compat.XMaterial;
+import com.adri1711.randomevents.compat.XParticle;
+import com.adri1711.randomevents.compat.XSound;
 
 public class Use implements Listener {
 
@@ -141,7 +141,7 @@ public class Use implements Listener {
 										evt.getClickedBlock().getState().getData().clone());
 								evt.getClickedBlock().setType(peto.getWool().parseMaterial());
 								try {
-									evt.getClickedBlock().setData(peto.getDye().getWoolData());
+									setWoolColor(evt.getClickedBlock(), peto.getDye().getWoolData());
 								} catch (Throwable e) {
 
 								}
@@ -220,7 +220,7 @@ public class Use implements Listener {
 								player.getInventory().remove(player.getItemInHand());
 								player.updateInventory();
 							}
-							player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 60, 5));
+							player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, 60, 5));
 							player.sendMessage(
 									plugin.getLanguage().getTagPlugin() + plugin.getLanguage().getNowProtected());
 						} else if (player.getItemInHand().equals(plugin.getReventConfig().getCheckpointItem())) {
@@ -230,7 +230,7 @@ public class Use implements Listener {
 									plugin.getMatchActive().getMapHandler().getCheckpoints().get(player.getName()),
 									plugin);
 							if(plugin.getReventConfig().getRaceSlowEffect())
-							player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 60, 99));
+							player.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 60, 99));
 
 						} else if (player.getItemInHand().equals(plugin.getReventConfig().getEndVanishItem())) {
 							evt.setCancelled(true);
@@ -269,7 +269,7 @@ public class Use implements Listener {
 								Boolean hit = Boolean.FALSE;
 								UtilsRandomEvents.playSound(plugin, player, XSound.ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR);
 								Location locEnd = player.getLocation();
-								ParticleDisplay pa = ParticleDisplay.display(plugin.getApi(), locEnd,
+								ParticleDisplay pa = ParticleDisplay.display(plugin, locEnd,
 										Particle1711.REDSTONE);
 								for (Block loc : player.getLineOfSight((Set<Material>) null,
 										plugin.getReventConfig().getQuakeShootDistance())) {
@@ -610,7 +610,7 @@ public class Use implements Listener {
 							}
 							loc.getBlock().setType(peto.getWool().parseMaterial());
 							try {
-								loc.getBlock().setData(peto.getDye().getWoolData());
+								setWoolColor(loc.getBlock(), peto.getDye().getWoolData());
 							} catch (Throwable e) {
 
 							}
@@ -1054,6 +1054,15 @@ public class Use implements Listener {
 
 	public void setPlugin(RandomEvents plugin) {
 		this.plugin = plugin;
+	}
+
+	private static void setWoolColor(org.bukkit.block.Block block, byte legacyColor) {
+		org.bukkit.DyeColor[] colors = org.bukkit.DyeColor.values();
+		int index = Byte.toUnsignedInt(legacyColor);
+		if (index < colors.length) {
+			org.bukkit.Material colorWool = org.bukkit.Material.matchMaterial(colors[index].name() + "_WOOL");
+			if (colorWool != null) block.setType(colorWool, false);
+		}
 	}
 
 }

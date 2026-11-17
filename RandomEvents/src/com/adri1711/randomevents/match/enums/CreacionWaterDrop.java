@@ -2,19 +2,19 @@ package com.adri1711.randomevents.match.enums;
 
 public enum CreacionWaterDrop {
 
-	NAME(0, "§6§lChoose Name"),
+	NAME(0, "Â§6Â§lChoose Name"),
 
-	SPAWN(1, "§6§lPut 'Done' to select the spawn of the players"),
+	SPAWN(1, "Â§6Â§lPut 'Done' to select the spawn of the players"),
 
-	GOAL_LOCATION1(2, "§6§lPut 'Done' to select the point 1 of the goal"),
+	GOAL_LOCATION1(2, "Â§6Â§lPut 'Done' to select the point 1 of the goal"),
 
-	GOAL_LOCATION2(3, "§6§lPut 'Done' to select the point 2 of the goal"),
+	GOAL_LOCATION2(3, "Â§6Â§lPut 'Done' to select the point 2 of the goal"),
 
-	SAVE(997, "§6§lYou are about to save a Water Drop, put 'Y' to confirm or 'N' to continue creating"),
+	SAVE(997, "Â§6Â§lYou are about to save a Water Drop, put 'Y' to confirm or 'N' to continue creating"),
 
-	DELETE(998, "§6§lChoose the field you want to remove"),
+	DELETE(998, "Â§6Â§lChoose the field you want to remove"),
 
-	CANCEL(999, "§6§lYou are about to cancel a Water drop, put 'Y' to confirm or 'N' to continue creating");
+	CANCEL(999, "Â§6Â§lYou are about to cancel a Water drop, put 'Y' to confirm or 'N' to continue creating");
 
 	private Integer position;
 	private String message;

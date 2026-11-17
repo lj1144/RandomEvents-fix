@@ -27,7 +27,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 
-import com.adri1711.api.API1711;
+import com.adri1711.randomevents.compat.PlatformApi;
 import com.adri1711.randomevents.api.events.ReventSpawnEvent;
 import com.adri1711.randomevents.bbdd.HikariCP;
 import com.adri1711.randomevents.commands.CmdExecutor;
@@ -65,7 +65,7 @@ public class RandomEvents extends JavaPlugin {
 
 	private ComandosExecutor comandosExecutor;
 
-	private API1711 api;
+	private PlatformApi api;
 
 	private Random random;
 
@@ -124,7 +124,7 @@ public class RandomEvents extends JavaPlugin {
 	private Logger logger;
 
 	public void onEnable() {
-		this.api = new API1711("%%__USER__%%", "RandomEvents");
+		this.api = new PlatformApi();
 		this.lastCheck=new Date();
 		logger=getLogger();
 		logger.info("Loading config...");
@@ -156,15 +156,17 @@ public class RandomEvents extends JavaPlugin {
 		getServer().getPluginManager().registerEvents((Listener) new Move(this), (Plugin) this);
 
 		if (getServer().getPluginManager().getPlugin("CrackShot") != null) {
-			getServer().getPluginManager().registerEvents((Listener) new WeaponShoot(this), (Plugin) this);
+			WeaponShoot.register(this);
 			getLoggerP().info("[RandomEvents] CrackShot hooked succesfully!");
 
 		}
 
 		if (getServer().getPluginManager().getPlugin("NametagEdit") != null) {
-			nametagHook = new NameTagHook(this);
-			getLoggerP().info("[RandomEvents] NameTagEdit hooked succesfully!");
-
+			NameTagHook hook = new NameTagHook(this);
+			if (hook.getApi() != null) {
+				nametagHook = hook;
+				getLoggerP().info("[RandomEvents] NameTagEdit hooked successfully!");
+			}
 		}
 
 		getLogger().info(" Author adri1711- activado");
@@ -513,11 +515,11 @@ public class RandomEvents extends JavaPlugin {
 		this.comandosExecutor = comandosExecutor;
 	}
 
-	public API1711 getApi() {
+	public PlatformApi getApi() {
 		return api;
 	}
 
-	public void setApi(API1711 api) {
+	public void setApi(PlatformApi api) {
 		this.api = api;
 	}
 

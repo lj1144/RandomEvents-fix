@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 import javax.sql.DataSource;
 
 import org.bukkit.scheduler.BukkitRunnable;

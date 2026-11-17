@@ -9,7 +9,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
-import org.spigotmc.event.entity.EntityDismountEvent;
 
 import com.adri1711.randomevents.RandomEvents;
 import com.adri1711.randomevents.match.enums.MinigameType;

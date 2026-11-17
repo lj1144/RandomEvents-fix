@@ -3,7 +3,7 @@ package com.adri1711.randomevents.bbdd.runnables;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 import javax.sql.DataSource;
 
 import org.bukkit.scheduler.BukkitRunnable;

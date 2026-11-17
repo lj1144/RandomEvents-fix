@@ -63,10 +63,10 @@ import com.adri1711.randomevents.util.UtilsCitizen;
 import com.adri1711.randomevents.util.UtilsDisguises;
 import com.adri1711.randomevents.util.UtilsRandomEvents;
 import com.adri1711.randomevents.util.UtilsSQL;
-import com.adri1711.util.FastBoard;
-import com.adri1711.util.enums.Particle1711;
-import com.adri1711.util.enums.XMaterial;
-import com.adri1711.util.enums.XSound;
+import com.adri1711.randomevents.compat.FastBoard;
+import com.adri1711.randomevents.compat.Particle1711;
+import com.adri1711.randomevents.compat.XMaterial;
+import com.adri1711.randomevents.compat.XSound;
 
 public class MatchActive {
 
@@ -1488,7 +1488,7 @@ public class MatchActive {
 					}
 					s = ChatColor.translateAlternateColorCodes('&', s);
 				} catch (Exception e) {
-					s = s.replaceAll("&", "ง");
+					s = s.replaceAll("&", "ยง");
 				}
 				p.sendMessage(s);
 			}
@@ -1516,7 +1516,7 @@ public class MatchActive {
 				s = ChatColor.translateAlternateColorCodes('&', s);
 
 			} catch (Exception e) {
-				s = s.replaceAll("&", "ง");
+				s = s.replaceAll("&", "ยง");
 			}
 			p.sendMessage(s);
 		}
@@ -1814,7 +1814,7 @@ public class MatchActive {
 				iniciaPlayer(p);
 
 			}
-			PotionEffect pot = new PotionEffect(PotionEffectType.FAST_DIGGING, 240, 99);
+			PotionEffect pot = new PotionEffect(PotionEffectType.HASTE, 240, 99);
 			UtilsRandomEvents.applyPotionEffects(pot, getPlayerHandler().getPlayersObj());
 
 			task = new BukkitRunnable() {
@@ -2361,13 +2361,13 @@ public class MatchActive {
 
 				Boat boat = null;
 				if (getMatch().getEntitySpawns() == null || getMatch().getEntitySpawns().isEmpty()) {
-					boat = (Boat) p.getWorld().spawnEntity(p.getLocation(), EntityType.BOAT);
+					boat = (Boat) p.getWorld().spawnEntity(p.getLocation(), EntityType.OAK_BOAT);
 					boat.setPassenger(p);
 
 				} else {
 					boat = (Boat) p.getWorld().spawnEntity(
 							match.getEntitySpawns().get(getPlayerHandler().getPlayersObj().indexOf(p)),
-							EntityType.BOAT);
+							EntityType.OAK_BOAT);
 				}
 
 				getMobs().add(boat);
@@ -3978,7 +3978,7 @@ public class MatchActive {
 				removePotionsEffects(p);
 			}
 
-			p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20, 2));
+			p.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, 20, 2));
 
 		}
 
@@ -4012,7 +4012,7 @@ public class MatchActive {
 			removePotionsEffects(p);
 
 			// p.addPotionEffect(new
-			// PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20, 2));
+			// PotionEffect(PotionEffectType.RESISTANCE, 20, 2));
 		}
 	}
 
@@ -4039,7 +4039,7 @@ public class MatchActive {
 			}
 		}
 		// p.addPotionEffect(new
-		// PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20, 2));
+		// PotionEffect(PotionEffectType.RESISTANCE, 20, 2));
 
 	}
 
