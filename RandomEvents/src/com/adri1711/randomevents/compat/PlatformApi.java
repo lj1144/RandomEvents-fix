@@ -9,7 +9,6 @@ import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Location;
 import org.bukkit.WorldBorder;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Boat;
 import org.bukkit.entity.EnderPearl;
@@ -82,11 +81,11 @@ public final class PlatformApi {
     }
 
     public Double getHorseSpeed(Horse horse) {
-        return horse.getAttribute(Attribute.MOVEMENT_SPEED).getBaseValue();
+        return horse.getAttribute(BukkitCompat.attribute("MOVEMENT_SPEED", "GENERIC_MOVEMENT_SPEED")).getBaseValue();
     }
 
     public void setHorseSpeed(Horse horse, double speed) {
-        horse.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(speed);
+        horse.getAttribute(BukkitCompat.attribute("MOVEMENT_SPEED", "GENERIC_MOVEMENT_SPEED")).setBaseValue(speed);
     }
 
     public boolean isCraftHorse(Object entity) { return entity instanceof Horse; }

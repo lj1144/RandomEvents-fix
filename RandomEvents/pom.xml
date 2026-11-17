@@ -6,12 +6,15 @@
 
     <groupId>com.adri1711</groupId>
     <artifactId>RandomEvents</artifactId>
-    <version>2.9.5</version>
+    <version>2.9.6</version>
     <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>25</maven.compiler.release>
+        <maven.compiler.release>17</maven.compiler.release>
+        <paper.api.version>1.18.2-R0.1-SNAPSHOT</paper.api.version>
+        <paper.api.yml>1.18</paper.api.yml>
+        <server.target>paper-1.18.2-plus</server.target>
     </properties>
 
     <repositories>
@@ -29,7 +32,7 @@
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>26.3.build.253-stable</version>
+            <version>${paper.api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -55,26 +58,44 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>paper-26.3</id>
+            <properties>
+                <maven.compiler.release>25</maven.compiler.release>
+                <paper.api.version>26.3.build.253-stable</paper.api.version>
+                <paper.api.yml>26.3</paper.api.yml>
+                <server.target>paper-26.3</server.target>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <sourceDirectory>src</sourceDirectory>
         <resources>
             <resource>
                 <directory>.</directory>
+                <filtering>true</filtering>
+                <includes><include>plugin.yml</include></includes>
+            </resource>
+            <resource>
+                <directory>.</directory>
+                <filtering>false</filtering>
                 <includes>
-                    <include>plugin.yml</include>
                     <include>config.yml</include>
                     <include>defaultConfig.yml</include>
                     <include>*.nbs</include>
                 </includes>
             </resource>
         </resources>
+        <finalName>RandomEvents-${project.version}-${server.target}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.14.1</version>
                 <configuration>
-                    <release>25</release>
+                    <release>${maven.compiler.release}</release>
                 </configuration>
             </plugin>
             <plugin>

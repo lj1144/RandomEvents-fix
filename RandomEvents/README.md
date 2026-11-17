@@ -1,33 +1,27 @@
-# RandomEvents Fix
-
-A modernized build of the open-source RandomEvents Minecraft plugin.
-
-## Target server
-
-- Paper 26.3
-- Java 25
-- Maven 3.9 or newer
-
-This project currently builds against Paper 26.3. It has not yet been verified in a live server here because the Paper launcher could not reach Mojang's server-file download host.
+# RandomEvents 2.9.6
 
 ## Build
 
-Open a terminal in the `RandomEvents` directory and run:
+Requirements: Maven 3.9+ and Java 17+. Run these commands from this directory:
 
 ```sh
 mvn clean package
 ```
 
-The plugin jar is written to `target/RandomEvents-2.9.5.jar`. Install that file in the server's `plugins` directory, then restart Paper.
+This creates `target/RandomEvents-2.9.6-paper-1.18.2-plus.jar`, compiled against Paper API 1.18.2.
 
-## Optional integrations
+A native Paper 26.3 build uses Java 25+; run:
 
-RandomEvents runs without these plugins. Their integrations activate only when the matching optional plugin is installed and enabled: CrackShot, PlaceholderAPI, WorldEdit, WorldGuard, Multiworld, Multiverse-Core, NametagEdit, LibsDisguises, NoteBlockAPI, and Citizens. Paper API and the shaded HikariCP, SLF4J, and Commons Lang dependencies are handled by Maven.
+```sh
+mvn -Ppaper-26.3 clean package
+```
 
-## Configuration notes
+This creates `target/RandomEvents-2.9.6-paper-26.3.jar`.
 
-The first server launch creates the plugin data folder and default configuration. Back up existing RandomEvents data before replacing an installed jar or changing server versions. MySQL remains disabled unless enabled in the configuration.
+## Compatibility and testing
 
-## License
+Source compilation was checked against Paper APIs 1.18.2, 1.19.4, 1.20.4, and 26.3. Older-version live-server checks and full minigame testing remain incomplete. The 2.9.5 build loaded on a Paper 26.3 server; this does not verify 2.9.6 runtime behavior.
 
-The RandomEvents project is distributed under the MIT License in `LICENSE.txt`.
+Back up `plugins/RandomEvents` before replacing the jar. Lib1711 is not required. Optional plugin integrations are listed in the repository's main README.
+
+MIT License; see `../LICENSE.txt`.

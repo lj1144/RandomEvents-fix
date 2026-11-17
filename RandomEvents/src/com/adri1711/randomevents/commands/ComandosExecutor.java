@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import com.adri1711.randomevents.compat.BukkitCompat;
 import com.adri1711.randomevents.RandomEvents;
 import com.adri1711.randomevents.api.events.ReventSpawnEvent;
 import com.adri1711.randomevents.match.Kit;
@@ -720,7 +721,7 @@ public class ComandosExecutor {
 						UtilsRandomEvents.teleportaPlayer(player,
 								plugin.getMatchActive().getMapHandler().getCheckpoints().get(player.getName()), plugin);
 						if (plugin.getReventConfig().getRaceSlowEffect())
-							player.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 60, 99));
+							player.addPotionEffect(new PotionEffect(BukkitCompat.potion("SLOWNESS", "SLOW"), 60, 99));
 
 					}
 				} else {

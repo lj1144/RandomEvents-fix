@@ -57,6 +57,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
+import com.adri1711.randomevents.compat.BukkitCompat;
 import com.adri1711.randomevents.RandomEvents;
 import com.adri1711.randomevents.match.Kit;
 import com.adri1711.randomevents.match.Match;
@@ -1113,7 +1114,7 @@ public class UtilsRandomEvents {
 	// }
 
 	public static void tiraCohete(Location l) {
-		Firework fw = (Firework) l.getWorld().spawnEntity(l, EntityType.FIREWORK_ROCKET);
+		Firework fw = (Firework) l.getWorld().spawnEntity(l, BukkitCompat.entityType("FIREWORK_ROCKET", "FIREWORK"));
 		FireworkMeta fwm = fw.getFireworkMeta();
 
 		Random r = new Random();
@@ -1626,7 +1627,7 @@ public class UtilsRandomEvents {
 				itemMeta.setLore(lore);
 
 				itemMeta.getItemFlags().add(ItemFlag.HIDE_ATTRIBUTES);
-				itemMeta.getItemFlags().add(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
+				itemMeta.getItemFlags().add(BukkitCompat.hidePotionDetailsFlag());
 				itemMeta.getItemFlags().add(ItemFlag.HIDE_ENCHANTS);
 
 				item.setItemMeta(itemMeta);
@@ -1666,7 +1667,7 @@ public class UtilsRandomEvents {
 			lore.add(plugin.getLanguage().getStatsWinsRatio() + ratio.toPlainString());
 			itemMeta.setLore(lore);
 			itemMeta.getItemFlags().add(ItemFlag.HIDE_ATTRIBUTES);
-			itemMeta.getItemFlags().add(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
+			itemMeta.getItemFlags().add(BukkitCompat.hidePotionDetailsFlag());
 			itemMeta.getItemFlags().add(ItemFlag.HIDE_ENCHANTS);
 			item.setItemMeta(itemMeta);
 			inv.setItem(position, item);
@@ -3330,7 +3331,7 @@ public class UtilsRandomEvents {
 			}
 			cabezaMeta.setLore(lore);
 			cabezaMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-			cabezaMeta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
+			cabezaMeta.addItemFlags(BukkitCompat.hidePotionDetailsFlag());
 			cabezaMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			cabeza.setItemMeta(cabezaMeta);
 			inv.setItem(i - (page * 36), cabeza);
@@ -3381,7 +3382,7 @@ public class UtilsRandomEvents {
 					cabezaMeta.setLore(plugin.getLanguage().getKitDefaultLore());
 				}
 				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_ATTRIBUTES);
-				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
+				cabezaMeta.getItemFlags().add(BukkitCompat.hidePotionDetailsFlag());
 				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_ENCHANTS);
 
 				cabeza.setItemMeta(cabezaMeta);
@@ -3430,7 +3431,7 @@ public class UtilsRandomEvents {
 				cabezaMeta.setLore(lore);
 
 				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_ATTRIBUTES);
-				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
+				cabezaMeta.getItemFlags().add(BukkitCompat.hidePotionDetailsFlag());
 				cabezaMeta.getItemFlags().add(ItemFlag.HIDE_ENCHANTS);
 				cabeza.setItemMeta(cabezaMeta);
 				inv.setItem(i, cabeza);
@@ -3632,7 +3633,7 @@ public class UtilsRandomEvents {
 
 	public static void invinciblePlayer(Player player, RandomEvents plugin) {
 		if (plugin.getReventConfig().getInvincibleAfterGame() > 0) {
-			player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE,
+			player.addPotionEffect(new PotionEffect(BukkitCompat.potion("RESISTANCE", "DAMAGE_RESISTANCE"),
 					plugin.getReventConfig().getInvincibleAfterGame(), 20));
 		}
 

@@ -45,6 +45,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.Team;
 import org.bukkit.util.Vector;
 
+import com.adri1711.randomevents.compat.BukkitCompat;
 import com.adri1711.randomevents.RandomEvents;
 import com.adri1711.randomevents.api.events.ReventBeginEvent;
 import com.adri1711.randomevents.api.events.ReventCountdownEvent;
@@ -1814,7 +1815,7 @@ public class MatchActive {
 				iniciaPlayer(p);
 
 			}
-			PotionEffect pot = new PotionEffect(PotionEffectType.HASTE, 240, 99);
+			PotionEffect pot = new PotionEffect(BukkitCompat.potion("HASTE", "FAST_DIGGING"), 240, 99);
 			UtilsRandomEvents.applyPotionEffects(pot, getPlayerHandler().getPlayersObj());
 
 			task = new BukkitRunnable() {
@@ -2361,13 +2362,13 @@ public class MatchActive {
 
 				Boat boat = null;
 				if (getMatch().getEntitySpawns() == null || getMatch().getEntitySpawns().isEmpty()) {
-					boat = (Boat) p.getWorld().spawnEntity(p.getLocation(), EntityType.OAK_BOAT);
+					boat = (Boat) p.getWorld().spawnEntity(p.getLocation(), BukkitCompat.entityType("OAK_BOAT", "BOAT"));
 					boat.setPassenger(p);
 
 				} else {
 					boat = (Boat) p.getWorld().spawnEntity(
 							match.getEntitySpawns().get(getPlayerHandler().getPlayersObj().indexOf(p)),
-							EntityType.OAK_BOAT);
+							BukkitCompat.entityType("OAK_BOAT", "BOAT"));
 				}
 
 				getMobs().add(boat);
@@ -3978,7 +3979,7 @@ public class MatchActive {
 				removePotionsEffects(p);
 			}
 
-			p.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, 20, 2));
+			p.addPotionEffect(new PotionEffect(BukkitCompat.potion("RESISTANCE", "DAMAGE_RESISTANCE"), 20, 2));
 
 		}
 
@@ -4012,7 +4013,7 @@ public class MatchActive {
 			removePotionsEffects(p);
 
 			// p.addPotionEffect(new
-			// PotionEffect(PotionEffectType.RESISTANCE, 20, 2));
+			// PotionEffect(BukkitCompat.potion("RESISTANCE", "DAMAGE_RESISTANCE"), 20, 2));
 		}
 	}
 
@@ -4039,7 +4040,7 @@ public class MatchActive {
 			}
 		}
 		// p.addPotionEffect(new
-		// PotionEffect(PotionEffectType.RESISTANCE, 20, 2));
+		// PotionEffect(BukkitCompat.potion("RESISTANCE", "DAMAGE_RESISTANCE"), 20, 2));
 
 	}
 

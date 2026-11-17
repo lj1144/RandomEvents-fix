@@ -8,7 +8,6 @@ import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.Criteria;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
@@ -27,7 +26,7 @@ public final class FastBoard {
         this.scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         this.objective = scoreboard.registerNewObjective(
                 "revent_" + UUID.randomUUID().toString().replace("-", "").substring(0, 12),
-                Criteria.DUMMY, LEGACY.deserialize("RandomEvents"));
+                "dummy", "RandomEvents");
         this.objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         player.setScoreboard(scoreboard);
     }

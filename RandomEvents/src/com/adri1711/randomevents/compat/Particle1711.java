@@ -51,7 +51,11 @@ public enum Particle1711 {
         try {
             return Particle.valueOf(current);
         } catch (IllegalArgumentException missing) {
-            return Particle.CLOUD;
+            try {
+                return Particle.valueOf(name());
+            } catch (IllegalArgumentException unavailable) {
+                return Particle.CLOUD;
+            }
         }
     }
 

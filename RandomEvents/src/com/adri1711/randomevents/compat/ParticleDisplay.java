@@ -35,7 +35,7 @@ public class ParticleDisplay {
         Location point = origin.clone().add(x, y, z);
         if (point.getWorld() == null) return;
         Particle type = particle;
-        if (type == Particle.DUST) {
+        if (type.name().equals("DUST") || type.name().equals("REDSTONE")) {
             point.getWorld().spawnParticle(type, point, 1, 0, 0, 0, 0,
                     new Particle.DustOptions(Color.RED, 1.0F));
         } else {
