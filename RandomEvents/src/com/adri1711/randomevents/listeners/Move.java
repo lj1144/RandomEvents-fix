@@ -49,6 +49,16 @@ public class Move implements Listener {
 	@EventHandler
 	public void onMove(PlayerMoveEvent evt) {
 		Player player = evt.getPlayer();
+		Location from = evt.getFrom();
+		Location to = evt.getTo();
+		if (to != null && (from.getX() != to.getX() || from.getY() != to.getY()
+				|| from.getZ() != to.getZ())) {
+			if (plugin.getMatchActive() != null && plugin.getMatchActive().getPlaying()
+					&& plugin.getMatchActive().getPlayerHandler().getPlayersObj().contains(player)) {
+				// Moving is activity too; looking around alone should not reset the idle timer.
+				plugin.getMatchActive().setDamageCounter(0);
+			}
+		}
 
 		if (plugin.getMatchActive() != null && plugin.getMatchActive().getPlaying()
 				&& plugin.getMatchActive().getPlayerHandler().getPlayersObj().contains(player)) {
