@@ -28,10 +28,6 @@ Pick the row matching your Paper server. The 1.18.2 build compiles against Paper
 
 Keep the existing `plugins/RandomEvents` data folder so saved configuration and minigame files remain available.
 
-## Testing status
-
-The source compiles against the Paper API versions listed above. Older-version live server checks have not been completed, and not every minigame or optional integration has been exercised. The maintainer confirmed that RandomEvents 2.9.5 loaded on a Paper 26.3 server; that does not confirm live behavior of the new 2.9.6 builds. Test 2.9.6 on a staging server and share any errors with the full console log and server version.
-
 ## Optional integrations
 
 CrackShot, PlaceholderAPI, WorldEdit, WorldGuard, Multiworld, Multiverse-Core, NametagEdit, LibsDisguises, NoteBlockAPI, and Citizens remain optional. Their features require the corresponding plugin.
